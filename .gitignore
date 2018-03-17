@@ -1,0 +1,5 @@
+target/*    # things built on dev workstation do not go in source control
+*.class
+result.txt
+result.xml
+*.jar
