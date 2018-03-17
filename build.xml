@@ -21,12 +21,12 @@
 
 
 	<path id="JUnit 4.libraryclasspath">
-	    <pathelement location="/usr/bin/junit-4.12.jar"/>
-	    <pathelement location="/usr/bin/hamcrest-core-1.3.jar"/>
+	    <pathelement location="/usr/share/java/junit4.jar"/>
+	    <pathelement location="/usr/share/java/hamcrest-core.jar"/>
 	</path>
 	<path id="Calavera.classpath">
 		<pathelement location="."/>
-		<pathelement location="/var/lib/tomcat8/lib/servlet-api.jar"/>
+		<pathelement location="/usr/share/tomcat8/lib/servlet-api.jar"/>
 		<path refid="JUnit 4.libraryclasspath"/>
 	</path>
 
@@ -119,26 +119,14 @@
 			</fileset>
 		</copy>
 
+                <echo>
+                        Attempting Tomcat reload.
+                </echo>
+
+                <exec executable="curl">
+                                                <arg value = "http://user:cursog2@127.0.0.1:8080/manager/text/reload?path=/"/>
+                </exec>
 
 
-		<echo>
-			Attempting Tomcat restart.
-		</echo>
-
-		<!-- !!!! need to add test if this is running -->
-		<!-- if run too quickly in succession, will fail with unpredictable results-->
-		<!-- could not get preferred syntax to work -->
-		<exec executable="bash">
-						<arg value = "/var/lib/tomcat8/bin/shutdown.sh"/>
-		</exec>
-
-		<exec executable="bash">
-						<arg value = "/var/lib/tomcat8/bin/startup.sh"/>
-		</exec>
-
-		<!-- deprecated
-		<exec command="/var/lib/tomcat8/bin/shutdown.sh"/>
-		<exec command="/var/lib/tomcat8/bin/startup.sh"/>
-    -->
 	</target>
 </project>
