@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <project default="main">
-	<property name="buildName"	value="CalaveraMain"/>
+	<property name="buildName"	value="hijo"/>
+	<property name="release"	value="1.0"/>
 	<property name="message" 	value="built and deployed to Tomcat."/>
 	<property name="testsOK" 	value="tested OK"/>
 	<property name="src" 		value="./src/main/java/biz/calavera"/>
@@ -89,7 +90,12 @@
 	</target>
 
 	<target name="compress">
-		<jar destfile="${output}/${buildName}.jar" basedir="${output}">
+                <exec executable="git" outputproperty="git.revision">
+                   <arg value="log" />
+                   <arg value="-1" />
+                   <arg value="--pretty=format:%H" />
+                </exec>
+		<jar destfile="${output}/${buildName}-${release}-${git.revision}.jar" basedir="${output}">
 			<include name="**/*.class"/>
 			<manifest>
 			  <attribute name="MainServlet" value="biz.calavera.MainServlet"/>
