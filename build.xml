@@ -109,7 +109,15 @@
 	</target>
 
 	<target name="deploy" >
-		<delete dir="${deploy}"/>
+		<delete>
+                        <fileset dir="${deploy}">
+                                <include name="**/*.jar"/>
+                                <exclude name="**/Test*"/>
+                        </fileset>
+                        <fileset dir="${configDeploy}">
+                                <include name="web.xml"/>
+                        </fileset>
+		</delete>
 		<mkdir dir="${deploy}"/>
 
 		<copy todir="${deploy}">
@@ -124,6 +132,15 @@
 				<include name="web.xml"/>
 			</fileset>
 		</copy>
+                <chgrp group="tomcat8" >
+                        <fileset dir="${deploy}">
+                                <include name="**/*.jar"/>
+                                <exclude name="**/Test*"/>
+                        </fileset>
+			<fileset dir="${configDeploy}">
+				<include name="web.xml"/>
+			</fileset>
+                </chgrp>
 
                 <echo>
                         Attempting Tomcat reload.
