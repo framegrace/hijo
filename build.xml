@@ -151,7 +151,7 @@
 		</copy>
 
 		<copy todir="${configDeploy}">
-			<fileset dir="${config}">
+			<fileset dir="${output}">
 				<include name="web.xml"/>
 			</fileset>
 		</copy>
