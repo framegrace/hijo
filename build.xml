@@ -125,7 +125,7 @@
              <path id="package_name">
                  <fileset dir=".">
                      <include name="${buildName}-${release}-*.tgz"/>
-                 </dirset>
+                 </fileset>
              </path>
              <property name="pkg-name" refid="package_name" />
              <untar src="${pkg-name}" compression="gzip" dest="./" />
