@@ -117,7 +117,7 @@
             <tar destfile="./${buildName}-${release}-${git.revision}.tgz"
                 basedir="./"
                 compression="gzip"
-                includes="artifact*.spec,target/hijo.jar,target/web.xml,build.xml"/>
+                includes="artifact*.spec,target/hijo.jar,target/web.xml,build.xml,tests/*"/>
             <!-- <gzip destfile="${buildName}-${release}-${git.revision}.tgz" src="${buildName}-${release}-${git.revision}.tar"/> -->
         </target>
 
