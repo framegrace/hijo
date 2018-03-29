@@ -121,6 +121,16 @@
             <!-- <gzip destfile="${buildName}-${release}-${git.revision}.tgz" src="${buildName}-${release}-${git.revision}.tar"/> -->
         </target>
 
+	<target name="unpack" >
+             <path id="package_name">
+                 <fileset dir=".">
+                     <include name="${buildName}-${release}-*.tgz"/>
+                 </dirset>
+             </path>
+             <property name="pkg-name" refid="package_name" />
+             <untar src="${pkg-name}" compression="gzip" dest="./" />
+        </target>
+
 	<target name="deploy" >
 		<delete>
                         <fileset dir="${deploy}">
