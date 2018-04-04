@@ -5,4 +5,4 @@ rm $WORKSPACE/jmeter.jtl
 # Run the tests
 echo "## Running the tests"
 cd "$WORKSPACE"
-jmeter -n -t jmeter.jmx -l $WORKSPACE/jmeter.jtl
+jmeter -n -t tests/jmeter.jmx -l $WORKSPACE/jmeter.jtl
