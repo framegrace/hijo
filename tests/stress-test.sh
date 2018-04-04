@@ -5,4 +5,4 @@ rm $WORKSPACE/jmeter.csv > /dev/null 2>&1 || true
 # Run the tests
 echo "## Running the tests"
 cd "$WORKSPACE"
-jmeter -n -t tests/jmeter.jmx -l $WORKSPACE/jmeter.csv
+jmeter -n -p tests/jmeter.properties -t tests/jmeter.jmx -l $WORKSPACE/jmeter.jtl
